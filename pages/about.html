@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arizona Media</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,400;0,500;0,700;0,900;1,700;1,900&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="../css/reset.css">
+    <link rel="stylesheet" href="../css/base.css">
+    <link rel="stylesheet" href="../css/layout.css">
+    <link rel="stylesheet" href="../css/components.css">
+
+    <style>
+        /* Овальный контейнер карты */
+        .interactive-map-container {
+            width: 100%;
+            height: 450px; 
+            
+            /* Форма овала */
+            border-radius: 50%; 
+
+            /* --- УБРАЛИ ЧЕРНЫЙ ФОН --- */
+            background: transparent; 
+            /* ------------------------- */
+
+            /* Маска для плавного исчезновения краев */
+            -webkit-mask-image: radial-gradient(ellipse at center, black 40%, transparent 95%);
+            mask-image: radial-gradient(ellipse at center, black 40%, transparent 95%);
+
+            overflow: hidden;
+            position: relative;
+            margin-bottom: 60px;
+            cursor: grab;
+            
+            /* Тень снаружи */
+            box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+            
+            max-width: 900px; 
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .interactive-map-container:active {
+            cursor: grabbing;
+        }
+
+        /* Сама картинка карты */
+        .draggable-map-img {
+            position: absolute;
+            
+            /* --- ПРИБЛИЗИЛИ КАРТУ (ЗУМ) --- */
+            width: 280%; /* Было 160%, стало 280% - очень крупно */
+            height: auto; 
+            
+            /* Центруем увеличенную карту */
+            top: -90%;
+            left: -90%;
+            /* ------------------------------ */
+
+            user-select: none;
+            pointer-events: none;
+            will-change: transform;
+        }
+
+        /* Подсказка поверх карты */
+        .map-hint {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(0,0,0,0.5);
+            backdrop-filter: blur(5px);
+            color: rgba(255, 255, 255, 0.7);
+            padding: 8px 20px;
+            border-radius: 30px;
+            font-size: 13px;
+            pointer-events: none;
+            z-index: 5;
+        }
+    </style>
+</head>
+<body>
+
+    <header class="main-header" style="position: absolute; width: 100%; background: transparent; border: none;">
+        <div class="container header-content">
+            <div class="logo">ARIZONA<span class="logo-accent">MEDIA</span></div>
+            <nav class="main-nav">
+                <ul class="nav-list">
+                    <li><a href="../index.html" class="nav-link">Главная</a></li>
+                    <li><a href="media.html" class="nav-link">Медиа</a></li>
+                    <li><a href="academy.html" class="nav-link">Академия</a></li>
+                    <li><a href="about.html" class="nav-link active">О нас</a></li>
+                </ul>
+            </nav>
+            <div class="header-buttons">
+                <a href="#" class="btn btn-small btn-primary">Подать заявку</a>
+                <a href="#start" class="btn btn-small btn-outline">Личный кабинет</a>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        
+        <section class="hero-fullscreen">
+            <video class="hero-video-bg" autoplay muted loop playsinline>
+                <source src="../images/bg-video.MOV" type="video/mp4">
+            </video>
+
+            <div class="hero-overlay"></div>
+
+            <div class="hero-content">
+                <h1 class="hero-title-large">ARIZONA<br>ROLE PLAY</h1>
+                
+                <p class="hero-subtitle">
+                    Многопользовательская онлайн игра с огромным открытым миром,<br>
+                    в котором ты можешь стать кем захочешь!
+                </p>
+
+                <div class="hero-buttons">
+                    <a href="https://youtu.be/2iKlqwhVU0A" target="_blank" class="btn btn-white">
+                        Видео об игре 
+                        <svg class="btn-icon-svg" viewBox="0 0 14 16" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M14 8L0.5 15.7942L0.5 0.205771L14 8Z"/>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+
+        <section class="steps-section" style="padding-top: 80px;">
+            <div class="container">
+                
+                <div class="interactive-map-container" id="mapContainer">
+                    <img src="../images/map.jpg" class="draggable-map-img" id="mapImage" alt="Game Map">
+                    <div class="map-hint">Зажми и тяни, чтобы двигать карту</div>
+                </div>
+
+                <div class="social-stats-row">
+                    <a href="https://vk.com/arizonastaterp" target="_blank" class="social-stat-card">
+                        <div class="social-icon-circle bg-vk">
+                            <img src="https://cdn.simpleicons.org/vk/white" alt="VK">
+                        </div>
+                        <div class="social-text">
+                            <span class="social-count">519 тыс.</span>
+                            <span class="social-label">Подписчиков ВКонтакте</span>
+                        </div>
+                    </a>
+
+                    <a href="https://t.me/arizona_rpcom" target="_blank" class="social-stat-card">
+                        <div class="social-icon-circle bg-tg">
+                            <img src="https://cdn.simpleicons.org/telegram/white" alt="TG">
+                        </div>
+                        <div class="social-text">
+                            <span class="social-count">290 тыс.</span>
+                            <span class="social-label">Читают в Telegram</span>
+                        </div>
+                    </a>
+
+                    <a href="https://www.youtube.com/@ArizonaGames1" target="_blank" class="social-stat-card">
+                        <div class="social-icon-circle bg-yt">
+                            <img src="https://cdn.simpleicons.org/youtube/white" alt="YT">
+                        </div>
+                        <div class="social-text">
+                            <span class="social-count">183 тыс.</span>
+                            <span class="social-label">Смотрят на YouTube</span>
+                        </div>
+                    </a>
+                </div>
+
+                <h2 style="text-align: center; margin-bottom: 30px;">Играй в SAMP с Arizona Role Play!</h2>
+                
+                <div class="scroll-text-container">
+                    <div class="scroll-text-content">
+                        <p>Погрузись в открытый игровой мир и почувствуй себя в роли любого персонажа, известной реальной личности или выбери свой особенный путь – здесь доступны любые сценарии событий.</p>
+
+                        <p><strong>Arizona RP — игра, с которой началась история SAMP</strong></p>
+                        <p>История началась 23 августа 2014 года. Благодаря стремительно растущей популярности проект развивался, охватывая все большее количество игроков. Уже к 2017 году Arizona Role Play занял лидирующие позиции по посещаемости среди всех известных проектов Самп и сохраняет свои позиции по сей день, став полноценной отдельной игрой.</p>
+                        <p><strong>SAMP: Arizona RP</strong></p>
+                        <p>Уникальный игровой процесс привлекает максимальной реалистичностью и безграничными возможностями, так как каждый игрок вносит свои коррективы в ход событий и является частью одного общего мира.</p>
+                        <p>Наша игра позволяет: ощутить запах больших денег и почувствовать каково быть на вершине мира; опробовать крутые авто новейших моделей — провести личный тест-драйв, тюнинговать, разбивать и ремонтировать, ведь в игре можно всё; выбрать путь крутого копа и быть на волосок от смерти, постоянно гоняясь за преступниками, или попасть в преступную группировку и дослужиться до главы мафии; примерить на себя роль злостного преступника и вселять страх во всех окружающих или стать на путь помощи населению: солдатом, пожарным или таксистом — смысл Samp Role Play в том, что важен каждый игрок, как в реальном мире; множество игровых событий, миссий, квестов, бизнесов и развлечений на любой вкус с полным погружением в специфическую атмосферу реально-виртуального мира.</p>
+                        <p>Играй в San Andreas Multiplayer любым удобным способом, включая мобильный телефон – теперь ты будешь на связи с любимой игрой и друзьями всегда и везде. Мы ценим комфорт наших игроков, поэтому обеспечили полную синхронизацию между ПК и мобильной версией игры. SAMP Mobile успешно прошел тестирование и дает возможность оценить все преимущества такого формата. Для установки потребуется любой смартфон с операционной системой Android 7.0 и выше.</p>
+                        <p><strong>SAMP Лаунчер: все преимущества в одной программе</strong></p>
+                        <p>Самп лаунчер поможет быстро запустить игру с любого устройства, всего в пару кликов. После установки и запуска просто следуйте инструкциям на экране и через пару минут вы будете готовы играть. Скачать samp для мобильного устройства можно в Google Play. Приложение Arizona Mobile бесплатное и поддерживает автоматические обновления!</p>
+                        <p>Мобильная версия значительно расширяет твои возможности. Играй из любого места: в перерывах между учебой, во время поездки в транспорте, на улице, на отдыхе, во время длительного ожидания или любой другой ситуации, когда нет желания или возможности сесть за стационарный ПК для игры.</p>
+                        <p>Чтобы начать играть в Arizona Online, потребуется выполнить простые действия: Нажать на кнопку «Начать играть» на сайте и установить Лаунчер; Для запуска игры на ПК потребуется кликнуть по ярлыку лаунчера, ввести nickname и начать игру; На мобильном устройстве запуск игры при помощи лаунчера аналогичный.</p>
+                    </div>
+                </div>
+
+                <h2 style="text-align: center; margin: 80px 0 40px 0; border-top: 1px solid rgba(255,255,255,0.05); padding-top: 60px;">
+                    Руководство Проекта
+                </h2>
+                
+                <div class="steps-grid" id="team-grid"></div>
+
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="main-footer">
+        <div class="container">
+            <p class="copyright">&copy;2026 Все права защищены.</p>
+        </div>
+    </footer>
+
+    <script>
+        // --- СКРИПТ АДМИНИСТРАЦИИ ---
+        const teamData = [
+            { name: "Сэм Мейсон", role: "Основатель", img: "sammason.jpg", link: "https://vk.com/s.mason", tg_link: "https://t.me/arizona_rpcom" },
+            { name: "Conor", role: "Директор", img: "conor.jpg", link: "https://vk.com/13conor13", tg_link: "https://t.me/arizona_rpcom" },
+            { name: "Roy_Shelby", role: "Спец. Администратор", img: "royshalby.jpg", link: "https://vk.com/royshelby", tg_link: "https://t.me/royshelby777" },
+            { name: "Maras_Shakur", role: "Официальный Ютубер", img: "maras.jpg", link: "https://vk.com/maradowa", tg_link: "https://t.me/arizona_rpcom" }
+        ];
+
+        function createTeamCard(index, dataList) {
+            const iconVk = 'https://cdn.simpleicons.org/vk/white';
+            const iconTelegram = 'https://cdn.simpleicons.org/telegram/white';
+            const person = dataList[index];
+            let finalImg = `../images/${person.img}`;
+            let backupImg = `https://robohash.org/${person.name}.png?size=200x200&set=set3`;
+            
+            return `
+                <div class="media-card">
+                    <div class="media-avatar" style="border-color: var(--accent-red);">
+                        <img src="${finalImg}" onerror="this.onerror=null;this.src='${backupImg}';" alt="${person.name}">
+                    </div>
+                    <h3 style="margin-bottom: 5px;">${person.name}</h3>
+                    <p style="color: var(--accent-blue); font-weight: 700; margin-bottom: 15px; text-transform: uppercase; font-size: 12px;">${person.role}</p>
+                    <div class="media-links">
+                        <a href="${person.link}" target="_blank" class="social-btn" style="background: #0077FF;" title="VK"><img src="${iconVk}"></a>
+                        <a href="${person.tg_link}" target="_blank" class="social-btn telegram-btn" title="Telegram"><img src="${iconTelegram}"></a>
+                    </div>
+                </div>
+            `;
+        }
+
+        document.addEventListener("DOMContentLoaded", () => {
+            const grid = document.getElementById('team-grid');
+            let htmlContent = '';
+            for (let i = 0; i < teamData.length; i++) {
+                htmlContent += createTeamCard(i, teamData);
+            }
+            grid.innerHTML = htmlContent;
+        });
+
+        // --- СКРИПТ ДЛЯ ПЕРЕТАСКИВАНИЯ КАРТЫ ---
+        const mapContainer = document.getElementById('mapContainer');
+        const mapImage = document.getElementById('mapImage');
+        let isDragging = false;
+        let startX, startY;
+        let currentTranslateX = 0, currentTranslateY = 0;
+        let previousTranslateX = 0, previousTranslateY = 0;
+
+        mapContainer.addEventListener('mousedown', (e) => {
+            isDragging = true;
+            startX = e.clientX;
+            startY = e.clientY;
+            mapContainer.style.cursor = 'grabbing';
+        });
+
+        mapContainer.addEventListener('mousemove', (e) => {
+            if (!isDragging) return;
+            const x = e.clientX;
+            const y = e.clientY;
+            const deltaX = x - startX;
+            const deltaY = y - startY;
+            currentTranslateX = previousTranslateX + deltaX;
+            currentTranslateY = previousTranslateY + deltaY;
+            mapImage.style.transform = `translate(${currentTranslateX}px, ${currentTranslateY}px)`;
+        });
+
+        const stopDragging = () => {
+            if (!isDragging) return;
+            isDragging = false;
+            previousTranslateX = currentTranslateX;
+            previousTranslateY = currentTranslateY;
+            mapContainer.style.cursor = 'grab';
+        };
+
+        mapContainer.addEventListener('mouseup', stopDragging);
+        mapContainer.addEventListener('mouseleave', stopDragging);
+    </script>
+</body>
+</html>
