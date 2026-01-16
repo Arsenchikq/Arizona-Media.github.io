@@ -1,0 +1,454 @@
+/* --- Навигация --- */
+.nav-list { display: flex; gap: 40px; list-style: none; }
+.nav-link { font-weight: 500; font-size: 16px; text-transform: uppercase; transition: 0.3s; }
+.nav-link:hover, .nav-link.active { color: var(--accent-red); }
+
+/* --- Кнопки --- */
+.header-buttons, .hero-buttons { display: flex; gap: 15px; flex-wrap: wrap; justify-content: center; }
+
+.btn {
+    display: inline-flex; align-items: center; justify-content: center;
+    padding: 18px 40px; border-radius: 50px;
+    font-weight: 700; text-transform: uppercase; font-size: 14px;
+    letter-spacing: 1px; cursor: pointer; border: none; transition: 0.3s;
+}
+.btn-small { padding: 10px 25px; font-size: 12px; }
+
+.btn-primary { background: var(--gradient-accent); color: white; box-shadow: 0 10px 25px rgba(236, 72, 153, 0.4); }
+.btn-primary:hover { transform: translateY(-3px); box-shadow: 0 15px 35px rgba(236, 72, 153, 0.6); }
+
+.btn-pulse { animation: pulse 2s infinite; }
+@keyframes pulse {
+    0% { box-shadow: 0 0 0 0 rgba(236, 72, 153, 0.7); }
+    70% { box-shadow: 0 0 0 15px rgba(236, 72, 153, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(236, 72, 153, 0); }
+}
+
+.btn-secondary { background: rgba(255,255,255,0.1); color: white; border: 1px solid rgba(255,255,255,0.1); }
+.btn-secondary:hover { background: rgba(255,255,255,0.2); }
+.btn-outline { border: 2px solid rgba(255,255,255,0.2); color: white; }
+.btn-outline:hover { border-color: var(--accent-red); color: var(--accent-red); }
+
+/* --- ЕДИНЫЙ СТИЛЬ БОКСОВ (КАРТОЧЕК) --- */
+.step-card, .media-card {
+    background: var(--bg-card); /* Цвет #27272a со скрина */
+    border-radius: var(--radius-lg);
+    border: 1px solid rgba(255,255,255,0.03);
+    text-align: center;
+    transition: 0.3s;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+    /* Сделали компактнее: */
+    padding: 30px 20px; 
+    height: 100%; /* Чтобы они были одной высоты в ряду */
+}
+
+.step-card:hover, .media-card:hover {
+    transform: translateY(-5px);
+    border-color: var(--accent-red);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+}
+
+.step-card h3, .media-card h3 {
+    font-size: 18px;
+    margin-bottom: 10px;
+    color: white;
+    font-weight: 800;
+}
+.step-card p { color: var(--text-gray); font-size: 14px; margin-bottom: 0; }
+
+/* Кружок с цифрой (как на скрине) */
+.step-number {
+    width: 60px; height: 60px;
+    background: var(--gradient-red); /* Оранжевый градиент */
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 24px; font-weight: 900; color: white;
+    margin-bottom: 20px;
+    box-shadow: 0 10px 20px rgba(255, 75, 31, 0.3);
+}
+
+/* Аватарка в Медиа (Сделали размер как у цифры 60px) */
+.media-avatar {
+    width: 70px; height: 70px; /* Чуть больше цифры, но компактно */
+    border-radius: 50%;
+    padding: 2px;
+    background: linear-gradient(135deg, #ec4899, #8b5cf6);
+    margin-bottom: 15px;
+    box-shadow: 0 5px 15px rgba(236, 72, 153, 0.2);
+}
+
+.media-avatar img {
+    width: 100%; height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+    background-color: #111;
+    border: 3px solid var(--bg-card);
+    display: block;
+}
+
+/* Кнопки ссылок - компактные */
+.media-links { width: 100%; display: flex; flex-direction: column; gap: 8px; margin-top: auto; }
+
+.link-btn {
+    display: block; width: 100%; padding: 8px 0; /* Тонкие кнопки */
+    border-radius: 8px; font-size: 11px; font-weight: 700;
+    text-transform: uppercase; text-decoration: none;
+    transition: 0.2s; color: white;
+}
+.link-btn:hover { opacity: 0.9; transform: scale(1.02); }
+
+.tiktok-link { background: #000; border: 1px solid #333; }
+.telegram-link { background: #229ED9; }
+.youtube-link { background: #FF0000; }
+.twitch-link { background: #9146FF; }
+
+/* Табы */
+.media-tabs { display: flex; justify-content: center; gap: 15px; margin-bottom: 40px; flex-wrap: wrap; }
+.tab-btn {
+    background: transparent; border: 2px solid rgba(255,255,255,0.1);
+    color: var(--text-gray); padding: 10px 30px; border-radius: 50px;
+    cursor: pointer; font-weight: 700; text-transform: uppercase; font-size: 13px; transition: 0.3s;
+}
+.tab-btn:hover, .tab-btn.active { background: var(--gradient-accent); color: white; border-color: transparent; }
+.media-section-content { display: none; animation: fadeIn 0.5s ease; }
+.media-section-content.active { display: block; }
+@keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+/* --- Ссылки (Соцсети - только иконки) --- */
+.media-links {
+    width: 100%;
+    display: flex;
+    flex-direction: row; /* Выстраиваем в ряд */
+    justify-content: center; /* Центрируем */
+    gap: 15px; /* Расстояние между иконками */
+    margin-top: auto;
+}
+
+.social-btn {
+    width: 42px;
+    height: 42px;
+    border-radius: 10px; /* Слегка скругленный квадрат */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    border: 1px solid rgba(255,255,255,0.05);
+}
+
+.social-btn img {
+    width: 22px; /* Размер самой иконки внутри */
+    height: 22px;
+    display: block;
+    filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));
+}
+
+.social-btn:hover {
+    transform: translateY(-3px);
+    filter: brightness(1.2);
+}
+
+/* Цвета кнопок */
+.tiktok-btn {
+    background-color: #000000;
+    border-color: #333;
+}
+
+.telegram-btn {
+    background-color: #229ED9; /* Официальный цвет Telegram */
+}
+
+.youtube-btn {
+    background-color: #FF0000; /* Официальный цвет YouTube */
+}
+
+.twitch-btn {
+    background-color: #9146FF; /* Официальный цвет Twitch */
+}
+/* --- КАРТОЧКА-КНОПКА "ЕЩЁ" --- */
+.show-more-card {
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 250px; /* Высота как у других карточек */
+    border: 2px dashed rgba(255, 255, 255, 0.1); /* Пунктирная рамка для отличия */
+    transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.show-more-card:hover {
+    border-color: var(--accent-red);
+    background: rgba(255, 255, 255, 0.03);
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+}
+
+.show-more-text {
+    font-size: 24px;
+    font-weight: 900;
+    text-transform: uppercase;
+    color: var(--text-white);
+    letter-spacing: 2px;
+}
+
+.show-more-card:hover .show-more-text {
+    color: var(--accent-red);
+}
+
+/* --- ПЛАВНАЯ АНИМАЦИЯ ПОЯВЛЕНИЯ --- */
+.hidden-item {
+    display: none !important;
+}
+
+.reveal-item {
+    display: flex !important;
+    animation: smoothReveal 0.8s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+    opacity: 0;
+    transform: translateY(40px) scale(0.95);
+}
+
+@keyframes smoothReveal {
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+/* --- ИНФО-БОКСЫ (КАК НА СКРИНШОТЕ) --- */
+.info-boxes-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    margin-bottom: 80px;
+}
+
+.info-box {
+    background: #18181b; /* Темный фон как на скрине */
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    padding: 50px 30px;
+    border-radius: 20px;
+    text-align: center;
+    transition: 0.3s;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.info-box:hover {
+    transform: translateY(-5px);
+    border-color: var(--accent-red); /* Розовая обводка при наведении */
+}
+
+/* Оранжевый круг с цифрой */
+.info-number {
+    width: 70px;
+    height: 70px;
+    background: linear-gradient(135deg, #ff4b1f 0%, #ff9068 100%); /* Оранжевый градиент */
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 28px;
+    font-weight: 900;
+    color: white;
+    margin-bottom: 25px;
+    box-shadow: 0 10px 20px rgba(255, 75, 31, 0.3);
+}
+
+.info-box h3 {
+    font-size: 24px;
+    font-weight: 900;
+    text-transform: uppercase;
+    font-style: italic;
+    margin-bottom: 15px;
+    color: white;
+    letter-spacing: 1px;
+}
+
+.info-box p {
+    font-size: 16px;
+    color: #a1a1aa; /* Светло-серый текст */
+    line-height: 1.6;
+    max-width: 300px; /* Чтобы текст не разъезжался */
+}
+/* Кнопки в Hero секции */
+.hero-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+/* Белая кнопка (Видео об игре) */
+.btn-white {
+    background: white;
+    color: #18181b; /* Черный текст */
+    border: none;
+    padding: 18px 45px;
+    border-radius: 50px;
+    font-weight: 700;
+    font-size: 16px;
+    text-transform: uppercase;
+    display: inline-flex;
+    align-items: center;
+    gap: 12px; /* Расстояние до иконки */
+    transition: 0.3s;
+    box-shadow: 0 5px 15px rgba(255,255,255,0.2);
+}
+
+.btn-white:hover {
+    background: #f4f4f5;
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(255,255,255,0.3);
+}
+
+/* Иконка внутри кнопки */
+.btn-icon-svg {
+    width: 14px;
+    height: 16px;
+    fill: #18181b; /* Цвет иконки под цвет текста */
+}
+/* --- СЕКЦИЯ КАРТЫ (Map Section) --- */
+.map-section {
+    position: relative;
+    width: 100%;
+    height: 400px; /* Высота блока карты */
+    background-color: #09090b; /* Темный фон */
+    /* Здесь можно поставить картинку карты на фон */
+    background-image: radial-gradient(circle at center, rgba(255,255,255,0.05) 0%, rgba(0,0,0,0) 70%);
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 50px;
+    overflow: hidden;
+}
+
+/* Кнопка "Посмотреть карту" по центру */
+.btn-map {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: white;
+    padding: 15px 40px;
+    border-radius: 50px;
+    font-weight: 700;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: 0.3s;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.btn-map:hover {
+    background: white;
+    color: black;
+}
+
+/* --- СОЦСЕТИ (Oval Buttons) --- */
+.social-stats-row {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin-bottom: 80px;
+}
+
+.social-stat-card {
+    background: #18181b;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    padding: 15px 30px;
+    border-radius: 60px; /* Овальная форма */
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    min-width: 280px;
+    transition: 0.3s;
+    text-decoration: none;
+}
+
+.social-stat-card:hover {
+    transform: translateY(-5px);
+    border-color: rgba(255, 255, 255, 0.2);
+    background: #27272a;
+}
+
+.social-icon-circle {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+.social-icon-circle img { width: 28px; height: 28px; }
+
+/* Цвета иконок */
+.bg-vk { background: #0077FF; }
+.bg-tg { background: #229ED9; }
+.bg-yt { background: #FF0000; }
+
+.social-text { display: flex; flex-direction: column; }
+.social-count { font-size: 24px; font-weight: 900; color: white; line-height: 1; margin-bottom: 5px; }
+.social-label { font-size: 12px; color: #a1a1aa; text-transform: uppercase; }
+
+
+/* --- СКРОЛЛ БЛОК (Текст внутри квадрата) --- */
+.scroll-text-container {
+    background: rgba(24, 24, 27, 0.6); /* Полупрозрачный фон */
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 20px;
+    padding: 40px;
+    max-width: 1000px;
+    margin: 0 auto 80px auto;
+    
+    /* Самое важное для скролла: */
+    height: 400px; /* Фиксированная высота */
+    overflow-y: auto; /* Включает вертикальную прокрутку */
+}
+
+/* Красивый скроллбар */
+.scroll-text-container::-webkit-scrollbar { width: 8px; }
+.scroll-text-container::-webkit-scrollbar-track { background: rgba(255,255,255,0.02); border-radius: 4px; }
+.scroll-text-container::-webkit-scrollbar-thumb { background: var(--accent-red); border-radius: 4px; }
+
+.scroll-text-content p {
+    color: #d4d4d8;
+    line-height: 1.8;
+    font-size: 16px;
+    margin-bottom: 20px;
+    text-align: justify; /* Красивое выравнивание текста */
+}
+.scroll-text-content strong { color: white; font-weight: 700; }
+/* --- ВИДЕО ВНУТРИ БЛОКА КАРТЫ --- */
+.map-video-bg {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    transform: translate(-50%, -50%);
+    z-index: 0; /* На задний план */
+    object-fit: cover;
+}
+
+/* Затемнение поверх видео карты */
+.map-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.4); /* Полупрозрачный слой */
+    z-index: 1;
+}
+
+/* Поднимаем кнопку выше видео */
+.btn-map {
+    position: relative;
+    z-index: 2; 
+}
