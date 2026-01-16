@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arizona Media</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,400;0,500;0,700;0,900;1,700;1,900&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="../css/reset.css">
+    <link rel="stylesheet" href="../css/base.css">
+    <link rel="stylesheet" href="../css/layout.css">
+    <link rel="stylesheet" href="../css/components.css">
+</head>
+<body>
+
+    <header class="main-header">
+        <div class="container header-content">
+            <div class="logo">ARIZONA<span class="logo-accent">MEDIA</span></div>
+            <nav class="main-nav">
+                <ul class="nav-list">
+                    <li><a href="../index.html" class="nav-link">Главная</a></li>
+                    <li><a href="media.html" class="nav-link active">Медиа</a></li>
+                    <li><a href="academy.html" class="nav-link">Академия</a></li>
+                    <li><a href="about.html" class="nav-link">О нас</a></li>
+                </ul>
+            </nav>
+            <div class="header-buttons">
+                <a href="#" class="btn btn-small btn-primary">Подать заявку</a>
+                <a href="#start" class="btn btn-small btn-outline">Личный кабинет</a>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section class="steps-section" style="min-height: 100vh;">
+            <div class="container">
+                <h2 style="text-align: center; margin-bottom: 30px;">Наши Партнеры</h2>
+
+                <div class="media-tabs">
+                    <button class="tab-btn active" onclick="openTab(event, 'tiktok')">TikTok Media</button>
+                    <button class="tab-btn" onclick="openTab(event, 'youtube')">YouTube Media</button>
+                    <button class="tab-btn" onclick="openTab(event, 'twitch')">Twitch Media</button>
+                </div>
+
+                <div id="tiktok" class="media-section-content active">
+                    <div class="steps-grid" id="tiktok-grid"></div>
+                </div>
+
+                <div id="youtube" class="media-section-content">
+                    <div class="steps-grid" id="youtube-grid"></div>
+                </div>
+
+                <div id="twitch" class="media-section-content">
+                    <div class="steps-grid" id="twitch-grid"></div>
+                </div>
+
+            </div>
+        </section>
+    </main>
+
+    <footer class="main-footer">
+        <div class="container">
+            <p class="copyright">&copy; 2026 Все права защищены.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Функция переключения вкладок
+        function openTab(evt, tabName) {
+            var i, tabcontent, tablinks;
+            tabcontent = document.getElementsByClassName("media-section-content");
+            for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].style.display = "none";
+                tabcontent[i].classList.remove("active");
+            }
+            tablinks = document.getElementsByClassName("tab-btn");
+            for (i = 0; i < tablinks.length; i++) {
+                tablinks[i].className = tablinks[i].className.replace(" active", "");
+            }
+            document.getElementById(tabName).style.display = "block";
+            setTimeout(() => { document.getElementById(tabName).classList.add("active"); }, 10);
+            evt.currentTarget.className += " active";
+        }
+
+        /* --- ЗАПОЛНЯЙ ДАННЫЕ ЗДЕСЬ --- */
+
+        // 1. TIKTOK
+        const tiktokData = [
+            { name: "chapman.lua", img: "chapman.jpg", link: "https://www.tiktok.com/@chapman.lua?is_from_webapp=1&sender_device=pc", tg_link: "https://t.me/chapman_lua" },
+            { name: "grand.exe", img: "grand.jpg", link: "https://www.tiktok.com/@grand.exe?is_from_webapp=1&sender_device=pc", tg_link: "https://t.me/grand_arz" },
+            { name: "diorka.exe", img: "diorka.jpg", link: "https://www.tiktok.com/@diorka.exe?is_from_webapp=1&sender_device=pc", tg_link: "https://t.me/diorkasamp" },
+            { name: "alphadelots", img: "alpha.jpg", link: "https://www.tiktok.com/@alphadelots?is_from_webapp=1&sender_device=pc", tg_link: "https://t.me/alphadelotsik" },
+            { name: "vikusik_shep", img: "vikusik.jpg", link: "https://www.tiktok.com/@vikusik_shep?is_from_webapp=1&sender_device=pc", tg_link: "https://t.me/vikusyasiyori" },
+            { name: "marlboro.lua", img: "marlboro.jpg", link: "https://www.tiktok.com/@marlboro.lua?is_from_webapp=1&sender_device=pc", tg_link: "https://t.me/marlboro_lua" },
+            { name: "arsenchik.ng", img: "arsenchik.jpg", link: "https://www.tiktok.com/@arsenchik.ng?is_from_webapp=1&sender_device=pc", tg_link: "https://t.me/arsenchik_ng" },
+            { name: "pepsiflocka17", img: "flocka17.jpg", link: "https://www.tiktok.com/@pepsiflocka17?is_from_webapp=1&sender_device=pc", tg_link: "https://t.me/flocka17" },
+            { name: "lill_lliza1", img: "lil1iza.jpg", link: "https://www.tiktok.com/@lill_lliza1?is_from_webapp=1&sender_device=pc", tg_link: "https://t.me/lil1iza" },
+            { name: "gerald.smokes26", img: "GeneralSmokess.jpeg", link: "https://www.tiktok.com/@gerald.smokes26?is_from_webapp=1&sender_device=pc", tg_link: "https://t.me/GeneralSmokess" },
+            { name: "patrick_us", img: "patrickuss.jpeg", link: "https://www.tiktok.com/@patrick_us?is_from_webapp=1&sender_device=pc", tg_link: "https://t.me/patrick_uss" },
+            { name: "amnyamka.exe", img: "amnyamkaexe.jpg", link: "https://www.tiktok.com/@amnyamka.exe?is_from_webapp=1&sender_device=pc", tg_link: "https://t.me/amnyamkaexe" },
+            { name: "noxu.samp", img: "noxusamp.jpeg", link: "https://www.tiktok.com/@noxu.samp?is_from_webapp=1&sender_device=pc", tg_link: "https://t.me/noxusamp" },
+            { name: "scandal.exe", img: "scandal.jpg", link: "https://www.tiktok.com/@scandal.exe?is_from_webapp=1&sender_device=pc", tg_link: "https://t.me/scandal_arz" },
+            { name: "water.zip1", img: "watersamp.jpg", link: "https://www.tiktok.com/@water.zip1?is_from_webapp=1&sender_device=pc", tg_link: "https://t.me/watersamp" },
+            { name: "forumnick.gta", img: "hatredina.jpeg", link: "https://www.tiktok.com/@forumnick.gta?is_from_webapp=1&sender_device=pc", tg_link: "https://t.me/hatredina" },
+            // добавь больше людей, чтобы появилась кнопка "ЕЩЁ"
+        ];
+
+        // 2. YOUTUBE
+        const youtubeData = [
+            { name: "Katsu Babetape", img: "katsu.jpg", link: "https://www.youtube.com/@KatsuBabetape", tg_link: "https://t.me/katsugey" },
+            { name: "Maras Rofals", img: "maras_rofals.jpg", link: "https://www.youtube.com/@MarasRofls", tg_link: "404" },
+            { name: "ВЕРТЕИЧ", img: "вертеич.jpg", link: "https://www.youtube.com/@verteich", tg_link: "404" },
+            { name: "Revazz", img: "revazz.jpg", link: "https://www.youtube.com/@Revazz", tg_link: "https://t.me/revazzoff" },
+            { name: "Venni", img: "Venni.jpg", link: "https://www.youtube.com/@VenniYT", tg_link: "https://t.me/vennitg" },
+            { name: "Алексеева берлога", img: "Алексеева берлога.jpg", link: "https://www.youtube.com/@BerlogaFBI", tg_link: "https://t.me/BerlogaFIB" },
+            { name: "WALDEMAR", img: "WALDEMAR.jpg", link: "https://www.youtube.com/@WALDEMAR_", tg_link: "https://t.me/waldemargta" },
+            { name: "STRAYF", img: "strayf.jpg", link: "https://www.youtube.com/@STRAYF", tg_link: "https://t.me/strauf" },
+            { name: "Jeezly", img: "Jeezly.jpg", link: "https://www.youtube.com/@jeez1y", tg_link: "404" },
+            { name: "Roy Shelby", img: "royshelby1.jpg", link: "https://www.youtube.com/@RoyShelby", tg_link: "https://t.me/royshelby777" },
+            { name: "Ися", img: "isya.jpg", link: "https://www.youtube.com/@isya", tg_link: "404" },
+            { name: "Рекс?", img: "рекс.jpg", link: "https://www.youtube.com/@thatswasrex", tg_link: "404" },
+            { name: "MALFOY", img: "MALFOY.jpg", link: "https://www.youtube.com/@%D0%9C%D0%90%D0%9B%D0%A4%D0%9E%D0%99", tg_link: "404" },
+            { name: "TheBathorya", img: "TheBathorya.jpg", link: "https://www.youtube.com/@TheBathorya", tg_link: "https://t.me/thebathorya" },
+            { name: "Алик Лезгин", img: "Алик.jpg", link: "https://www.youtube.com/@alik.lezgin", tg_link: "https://t.me/lezginoff" },
+            { name: "NOROLEAVE", img: "NOROLEAVE.jpg", link: "https://www.youtube.com/@noroleave", tg_link: "404" },
+        ];
+
+        // 3. TWITCH
+        const twitchData = [
+            { name: "Maras Shakur", img: "maras.jpg", link: "https://www.twitch.tv/marasshakursamp", tg_link: "404" },
+        ];
+
+
+        // --- СИСТЕМНАЯ ЧАСТЬ ---
+        function createCardHTML(platform, index, dataList, isHidden = false) {
+            
+            // НОВЫЕ ИКОНКИ (Сразу белые)
+            const iconTikTok = 'https://cdn.simpleicons.org/tiktok/white';
+            const iconYouTube = 'https://cdn.simpleicons.org/youtube/white';
+            const iconTwitch = 'https://cdn.simpleicons.org/twitch/white';
+            const iconTelegram = 'https://cdn.simpleicons.org/telegram/white';
+            
+            let platformIcon = '', platformClass = '';
+            
+            if (platform === 'TikTok') { 
+                platformClass = 'tiktok-btn'; 
+                platformIcon = iconTikTok; 
+            } else if (platform === 'YouTube') { 
+                platformClass = 'youtube-btn'; 
+                platformIcon = iconYouTube; 
+            } else { 
+                platformClass = 'twitch-btn'; 
+                platformIcon = iconTwitch; 
+            }
+
+            // Данные
+            const person = dataList[index - 1];
+            let finalName = person ? person.name : `${platform}ер #${index}`;
+            
+            // Фото (твое или робот)
+            let finalImg = person ? `../images/${person.img}` : `https://robohash.org/${platform}_${index}.png?size=200x200&set=set1`;
+            let finalLink = person ? person.link : "#";
+            let finalTgLink = person ? person.tg_link : "#";
+            let backupImg = `https://robohash.org/${platform}_${index}.png?size=200x200&set=set1`;
+
+            let hiddenClass = isHidden ? 'hidden-item' : '';
+
+            return `
+                <div class="media-card ${hiddenClass}">
+                    <div class="media-avatar">
+                        <img src="${finalImg}" onerror="this.onerror=null;this.src='${backupImg}';" alt="${finalName}">
+                    </div>
+                    <h3>${finalName}</h3>
+                    <div class="media-links">
+                        <a href="${finalLink}" target="_blank" class="social-btn ${platformClass}" title="Канал">
+                            <img src="${platformIcon}"> 
+                        </a>
+                        <a href="${finalTgLink}" target="_blank" class="social-btn telegram-btn" title="Telegram">
+                            <img src="${iconTelegram}">
+                        </a>
+                    </div>
+                </div>
+            `;
+        }
+
+        // --- ФУНКЦИЯ ЗАПОЛНЕНИЯ ---
+        function fillGrid(gridId, platformName, count, dataList) {
+            const grid = document.getElementById(gridId);
+            let htmlContent = '';
+
+            if (count <= 11) {
+                for (let i = 1; i <= count; i++) {
+                    htmlContent += createCardHTML(platformName, i, dataList);
+                }
+            } else {
+                // 1. Первые 11
+                for (let i = 1; i <= 11; i++) {
+                    htmlContent += createCardHTML(platformName, i, dataList);
+                }
+                // 2. Кнопка "ЕЩЁ" (12-я)
+                htmlContent += `
+                    <div class="media-card show-more-card" onclick="revealHidden(this, '${gridId}')">
+                        <div class="show-more-text">ЕЩЁ +</div>
+                    </div>
+                `;
+                // 3. Скрытые (12+)
+                for (let i = 12; i <= count; i++) {
+                    htmlContent += createCardHTML(platformName, i, dataList, true);
+                }
+            }
+            grid.innerHTML = htmlContent;
+        }
+
+        // --- АНИМАЦИЯ ОТКРЫТИЯ ---
+        function revealHidden(btn, gridId) {
+            btn.remove();
+            const grid = document.getElementById(gridId);
+            const hiddenItems = grid.querySelectorAll('.hidden-item');
+            
+            hiddenItems.forEach((item, index) => {
+                item.classList.remove('hidden-item');
+                item.classList.add('reveal-item');
+                item.style.animationDelay = `${index * 0.08}s`; 
+            });
+        }
+
+        document.addEventListener("DOMContentLoaded", () => {
+            fillGrid('tiktok-grid', 'TikTok', 16, tiktokData);
+            fillGrid('youtube-grid', 'YouTube', 16, youtubeData);
+            fillGrid('twitch-grid', 'Twitch', 1, twitchData);
+        });
+    </script>
+</body>
+</html>

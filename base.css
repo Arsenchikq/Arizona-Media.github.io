@@ -1,0 +1,38 @@
+:root {
+    /* --- ПАЛИТРА: Как на скриншоте --- */
+    
+    --bg-body: #18181b;       /* Темный фон страницы */
+    --bg-card: #27272a;       /* Тот самый серый цвет карточек */
+    
+    /* Градиенты (Оранжевый для цифр, Розовый для акцентов) */
+    --gradient-red: linear-gradient(135deg, #ff4b1f 0%, #ff9068 100%);
+    --gradient-accent: linear-gradient(135deg, #ec4899 0%, #8b5cf6 100%);
+    
+    --accent-red: #ec4899;
+    --text-white: #ffffff;
+    --text-gray: #a1a1aa;
+    
+    --radius-lg: 20px; /* Скругление как на картинке */
+    
+    --font-main: 'Rubik', sans-serif;
+}
+
+body {
+    background-color: var(--bg-body);
+    font-family: var(--font-main);
+    color: var(--text-white);
+    line-height: 1.5;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+h1, h2, h3 {
+    font-weight: 900;
+    text-transform: uppercase;
+    margin-bottom: 0.5em;
+    font-style: italic;
+    letter-spacing: 1px;
+}
+
+a { text-decoration: none; color: inherit; transition: 0.3s; }
